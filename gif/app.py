@@ -1,5 +1,6 @@
-from PIL import Image
 import os
+
+from PIL import Image
 
 directory = os.path.join(os.getcwd(), 'homer')
 
@@ -23,7 +24,3 @@ frame_list[0].save(
     duration=100,
     loop=0
 )
-
-
-
-
