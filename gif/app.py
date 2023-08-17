@@ -2,25 +2,30 @@ import os
 
 from PIL import Image
 
-directory = os.path.join(os.getcwd(), 'homer')
+from datetime import datetime
 
-directory_files = os.listdir(directory)
+def gif_creat(directory_files):
 
-directory_files.sort(key=lambda x: int(x.split(".")[0]))
+    #directory = os.path.join(os.getcwd(), 'homer')
 
-frame_list = []
+    #directory_files = os.listdir(directory)
 
-for frame_number in directory_files:
-    frame = Image.open(os.path.join(directory, frame_number))
-    frame_list.append(frame)
-    print(frame_number)
+    directory_files.sort(key=lambda x: int(x.split(".")[0]))
 
+    frame_list = []
 
-frame_list[0].save(
-    'homer.gif',
-    save_all=True,
-    append_images=frame_list[1:],
-    optimize=True,
-    duration=100,
-    loop=0
-)
+    for frame_number in directory_files:
+        frame = Image.open(os.path.join('homer', frame_number))
+        frame_list.append(frame)
+
+    gif_name = F'gif_{datetime.now().strftime("%d_%m_%Y_%H_%M_%S")}.gif'
+
+    frame_list[0].save(
+        gif_name,
+        save_all=True,
+        append_images=frame_list[1:],
+        optimize=True,
+        duration=100,
+        loop=0
+    )
+    return gif_name
