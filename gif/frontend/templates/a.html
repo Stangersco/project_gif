@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gif</title>
+</head>
+<style>
+
+</style>
+<script type="text/javascript">
+  function fetchData() {
+      fetch('/check')
+          .then(response => response.json())
+          .then(data => {
+              const dataContainer = document.getElementById('data-container');
+              dataContainer.textContent = `Server status: ${data.key}`;
+          })
+          .catch(error => {
+              console.error('Ошибка получения данных:', error);
+          });
+}
+
+const intervalId = setInterval(fetchData, 2000);
+
+</script>
+<body>
+    <header>
+        <h1>Gif Creator</h1>
+        <nav>
+            <ul>
+                <button><a href="/home">Check</a></button><br>
+
+                <div id="data-container">Server status: {{status_server}}</div>
+
+            </ul>
+        </nav>
+    </header>
+
+    <form action="/create_gif" enctype="multipart/form-data" method="post">
+      <h2>Upload image</h2>
+      <p><input type="file" name="photo" multiple accept="image/*">
+      <input type="submit" value="Отправить"></p>      
+    </form>
+
+      {% if gif_name %}
+        <output>name gif : {{gif_name}}</output><br>
+        <button><a href=/download/{{gif_name}} download>Download File</a></button>
+
+        <div class="share-buttons">
+            <button
+                class="telegram"
+                onClick='window.open("https://telegram.me/share/url?url=http://127.0.0.1:5000/download/{{gif_name}}","sharer","status=0,toolbar=0,width=650,height=500");'
+                title="Поделиться в Телеграм">
+                Share/Telegram
+            </button>
+        </div>
+      {% endif %}
+
+    <main>
+        <section>
+            <h2>About Us</h2>
+            <p><big>This is my first project</p>
+        </section>
+    </main>
+    
+</body>
+</html>
+
+
+
+
