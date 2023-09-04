@@ -1,5 +1,4 @@
 from fastapi import FastAPI, File, UploadFile
-from fastapi.responses import FileResponse
 from app import gif_creat
 
 
@@ -29,11 +28,5 @@ async def get_status():
     return
 
 
-
-"""
-@app.get("/file/download")
-def download_file():
-    return FileResponse(path='gif_save/gif_19_08_2023_14_49_03.gif', filename='list.json')
-"""
 
 
