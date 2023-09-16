@@ -30,8 +30,6 @@ input {
 
 input[type="file"] {
   display: none;
-  cursor: pointer;
-
 }
 
 input[type="submit"] {
@@ -39,10 +37,6 @@ input[type="submit"] {
   border: solid;
   border-color: #696969;
   font-size: 100%;
-}
-
-.nameGif {
-  padding-bottom: 10px;
 }
 
 button[type="but"] {
@@ -57,10 +51,10 @@ a {
   text-decoration: none;
 }
 
-h2 {
-  padding-bottom: 5px;
-}
 
+.nameGif {
+  padding-bottom: 10px;
+}
 
 .animated-gif {
   width: 15%;
@@ -113,4 +107,12 @@ h2 {
 
 #fileCount {
   padding-top: 5px;
+}
+
+#errormessage {
+  color: red;
+}
+
+#text2 {
+  padding-bottom: 5px;
 }
