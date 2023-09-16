@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gif</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/main.css')}}">
+</head>
+
+<script type="text/javascript">
+  function fetchData() {
+      fetch('/check')
+          .then(response => response.json())
+          .then(data => {
+              const dataContainer = document.getElementById('data-container');
+              const serverStatus = data.key.toLowerCase();
+              dataContainer.textContent = `${data.key}`;
+              if (serverStatus === 'online') {
+                dataContainer.style.color = 'green'; 
+            } else if (serverStatus === 'offline') {
+                dataContainer.style.color = '#C00';
+            }
+          })
+          .catch(error => {
+              console.error('Ошибка получения данных:', error);
+          });
+}
+
+fetchData()
+const intervalId = setInterval(fetchData, 2000);
+</script>
+
+<body>
+    <header>
+        <img class="animated-gif" src="{{ url_for('static', filename='/image/sphere.gif')}}">
+        <div class="text"><h1>Gif Creator</h1></div>
+    </header>
+
+    <h1>Main</h1>
+    <span>Server status: </span><span id="data-container">loading...</span>
+    
+
+    <form action="/uploadFiles" enctype="multipart/form-data" method="post">
+        <h2 id="text2">Upload image</h2>
+        <label for="Upload" class="custom-label">Upload files</label>
+        <input type="file" id="Upload" name="photo" class="inputfile" multiple accept="image/*">
+        <input type="submit" value="Send">
+        <div id="fileCount">No files selected</div>
+    </form>
+    
+{% if errormessage %}
+    <p id="errormessage">ERROR: {{errormessage}}</p>
+{% endif %}
+
+
+{% if gif_name %}
+    <div class="nameGif"><output>name gif: {{gif_name}}</output><br></div>
+    <button type="but"><a href=/download/{{gif_name}} download>Download File</a></button>
+
+    <div class="share-buttons">
+        <button
+            class="telegram"
+            onClick='window.open("https://telegram.me/share/url?url=http://127.0.0.1:5000/download/{{gif_name}}","sharer","status=0,toolbar=0,width=650,height=500");'
+            title="Share">
+            Share/Telegram
+        </button>
+    </div>
+{% endif %}
+
+    <div id=endText>
+        <h2>About Us</h2>
+        <p>This is my first project</p>
+        <a id="GitHub" target="_blank" href="https://github.com/Stangersco/project_gif">GitHub</a>
+    </div>
+</body>
+
+<script>
+    document.getElementById('Upload').addEventListener('change', function() {
+        const fileCount = this.files.length;
+        const fileCountText = fileCount === 1 ? '1 file selected' : `${fileCount} files selected`;
+        document.getElementById('fileCount').textContent = fileCountText;
+    });
+</script>
+
+</html>
+
+
+
+

@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght=100&display=swap');
+
+* {
+  margin: 0;
+}
+
+body, html {
+  width: 90%;
+  height: 90%;
+  padding-left: 0.5%;
+  color: #696969;
+  font-size: 120%;
+
+}
+
+body {
+  background-color: #030305;
+}
+
+header {
+  width: 100%;
+  background: transparent;
+  float: right;
+}
+
+input {
+  color: #696969;
+  background: #030305;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+input[type="submit"] {
+  cursor: pointer;
+  border: solid;
+  border-color: #696969;
+  font-size: 100%;
+}
+
+button[type="but"] {
+  background: #030305;
+  color: #696969;
+  cursor: pointer;
+  font-size: 90%;
+}
+
+a {
+  color: #696969;
+  text-decoration: none;
+}
+
+
+.nameGif {
+  padding-bottom: 10px;
+}
+
+.animated-gif {
+  width: 15%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.text {
+  color: #C00;
+  position: fixed;
+  font-size: 1vw;
+  top: 0;
+  right: 0;
+  padding-right: 2.5%;
+  padding-top: 4.5%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.telegram {
+  color: #00CED1;
+  background: #030305;
+  cursor: pointer;
+  font-size: 85%;
+}
+
+.custom-label {
+  background-color: #030305;
+  color: #696969;
+  cursor: pointer;
+  border: solid;
+  border-color: #696969;
+  font-size: 100%;
+  font-family: sans-serif;
+}
+
+#endText {
+  margin-top: 10px;
+}
+
+#GitHub {
+  color: #C00;
+  text-decoration: underline;
+  font-style: italic;
+}
+
+#fileCount {
+  padding-top: 5px;
+}
+
+#errormessage {
+  color: red;
+}
+
+#text2 {
+  padding-bottom: 5px;
+}

@@ -1,17 +1,11 @@
 import os
-
 from PIL import Image
-
 from datetime import datetime
 
+
 def gif_creat(directory_files):
-
-    #directory = os.path.join(os.getcwd(), 'homer')
-
-    #directory_files = os.listdir(directory)
-
+    
     directory_files.sort(key=lambda x: int(x.split(".")[0]))
-
     frame_list = []
 
     for frame_number in directory_files:
@@ -21,11 +15,12 @@ def gif_creat(directory_files):
     gif_name = F'gif_{datetime.now().strftime("%d_%m_%Y_%H_%M_%S")}.gif'
 
     frame_list[0].save(
-        gif_name,
+        f'gif_save/{gif_name}',
         save_all=True,
         append_images=frame_list[1:],
         optimize=True,
         duration=100,
         loop=0
     )
+
     return gif_name
